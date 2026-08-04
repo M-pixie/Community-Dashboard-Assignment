@@ -7,7 +7,8 @@ import {
   deleteEvent, 
   duplicateEvent, 
   rsvpEvent 
-} from '../controllers/EventController';
+} from '../controllers/eventController';
+
 import { protect } from '../middlewares/authMiddleware';
 
 const router = express.Router();
