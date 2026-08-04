@@ -139,7 +139,10 @@ export default function EventsPage() {
               className="pl-9 bg-muted/30 border-none shadow-none focus-visible:ring-1" 
             />
           </div>
-          <Select value={statusFilter} onValueChange={setStatusFilter}>
+          <Select
+  value={statusFilter}
+ onValueChange={(value: string) => setStatusFilter(value)}
+>
             <SelectTrigger className="w-[130px] bg-muted/30 border-none shadow-none">
               <div className="flex items-center gap-2"><Filter className="h-3 w-3"/> <SelectValue placeholder="Status" /></div>
             </SelectTrigger>
