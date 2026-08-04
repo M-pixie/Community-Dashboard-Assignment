@@ -114,7 +114,7 @@ export default function MemberProfile() {
                   <span className="hidden sm:inline text-border">•</span>
                   <span className="flex items-center gap-2">
                     <ActivityIcon className="h-4 w-4 shrink-0 text-primary" />
-                    <span className="font-medium text-foreground">Last active:</span> {format(new Date(member.lastLogin), 'MMM d, yyyy')}
+                    <span className="font-medium text-foreground">Last active:</span> {format(new Date(member.lastActive), 'MMM d, yyyy')}
                   </span>
                 </div>
               </div>

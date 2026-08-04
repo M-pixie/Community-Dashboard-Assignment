@@ -156,7 +156,7 @@ export default function MembersPage() {
                   <ArrowUpDown className="ml-2 h-3.5 w-3.5 opacity-50" />
                 </div>
               </TableHead>
-              <TableHead className="cursor-pointer font-medium text-muted-foreground h-12" onClick={() => handleSort('lastLogin')}>
+              <TableHead className="cursor-pointer font-medium text-muted-foreground h-12" onClick={() => handleSort('lastActive')}>
                 <div className="flex items-center">
                   Last Active
                   <ArrowUpDown className="ml-2 h-3.5 w-3.5 opacity-50" />
@@ -211,7 +211,7 @@ export default function MembersPage() {
                     {member.joinedDate ? format(new Date(member.joinedDate), 'MMM d, yyyy') : 'N/A'}
                   </TableCell>
                   <TableCell className="text-sm text-muted-foreground">
-                    {member.lastLogin ? format(new Date(member.lastLogin), 'MMM d, yyyy') : 'N/A'}
+                    {member.lastActive ? format(new Date(member.lastActive), 'MMM d, yyyy') : 'N/A'}
                   </TableCell>
                   <TableCell className="text-right">
                     <span className={`font-semibold text-sm ${
