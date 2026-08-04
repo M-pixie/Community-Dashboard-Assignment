@@ -5,19 +5,21 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const callback =
+  process.env.NODE_ENV === 'production'
+    ? 'https://community-dashboard-assignment.onrender.com/api/auth/google/callback'
+    : 'http://localhost:5000/api/auth/google/callback';
+
+console.log("NODE_ENV =", process.env.NODE_ENV);
 console.log("GOOGLE_CLIENT_ID =", process.env.GOOGLE_CLIENT_ID);
-console.log("GOOGLE_CLIENT_SECRET =", process.env.GOOGLE_CLIENT_SECRET?.substring(0, 10));
+console.log("Using Callback =", callback);
 
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-
-      callbackURL:
-        process.env.NODE_ENV === 'production'
-          ? 'https://community-dashboard-assignment.onrender.com/api/auth/google/callback'
-          : 'http://localhost:5000/api/auth/google/callback',
+      clientID: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      callbackURL: callback,
     },
 
     async (accessToken, refreshToken, profile, done) => {
