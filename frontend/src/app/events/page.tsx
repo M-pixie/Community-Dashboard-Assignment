@@ -27,7 +27,7 @@ export default function EventsPage() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading, refetch } = useQuery<any>({
     queryKey: ['events', search, statusFilter, categoryFilter],
     queryFn: async () => {
       const params = new URLSearchParams();
