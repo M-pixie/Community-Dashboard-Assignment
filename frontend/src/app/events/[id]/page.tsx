@@ -19,7 +19,7 @@ export default function EventDetailsPage() {
   const { user } = useAuth();
   const [isRSVPing, setIsRSVPing] = useState(false);
 
-  const { data: event, isLoading, refetch } = useQuery({
+  const { data: event, isLoading, refetch } = useQuery<any>({
     queryKey: ['event', id],
     queryFn: async () => {
       const res = await api.get(`/events/${id}`);
