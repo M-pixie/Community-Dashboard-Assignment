@@ -47,7 +47,15 @@ export default function ActivityPage() {
           <p className="text-muted-foreground mt-1">Timeline of all community events and interactions.</p>
         </div>
         <div className="w-full sm:w-[200px]">
-          <Select value={filterType} onValueChange={(val) => { setFilterType(val); setPage(1); }}>
+          <Select
+  value={filterType}
+  onValueChange={(val) => {
+    if (val !== null) {
+      setFilterType(val);
+      setPage(1);
+    }
+  }}
+>
             <SelectTrigger>
               <SelectValue placeholder="Filter by type" />
             </SelectTrigger>
