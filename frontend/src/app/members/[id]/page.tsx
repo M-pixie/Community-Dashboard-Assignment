@@ -133,7 +133,7 @@ export default function MemberProfile() {
                     endAngle={-270}
                   >
                     <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
-                    <RadialBar background clockWise dataKey="value" cornerRadius={10} />
+                    <RadialBar background dataKey="value" cornerRadius={10} />
                   </RadialBarChart>
                 </ResponsiveContainer>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
