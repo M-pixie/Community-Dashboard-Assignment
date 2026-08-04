@@ -1,8 +1,11 @@
-# CommuniDash - Community Engagement Dashboard
+# 🚀 CommuniDash - Community Engagement Dashboard
 
-A modern, production-ready SaaS dashboard for community managers to monitor member engagement, identify inactive users, and analyze activity. Built as a technical assessment exceeding typical assignment requirements with premium UI and architecture.
+> A modern, production-ready SaaS dashboard for community managers to monitor member engagement, identify inactive users, and analyze activity. Built as a technical assessment exceeding typical assignment requirements with premium UI and architecture.
 
-## Features
+---
+
+## ✨ Features
+
 - **Premium Dashboard**: Animated metrics cards, trend indicators, and beautiful charts.
 - **Member Management**: Search, sort, paginate, and filter members seamlessly.
 - **Detailed Profiles**: Deep dive into individual member activities, event participation, and engagement score distribution.
@@ -11,48 +14,78 @@ A modern, production-ready SaaS dashboard for community managers to monitor memb
 - **Dark Mode**: Native dark mode support using `next-themes`.
 - **Responsive Design**: Polished experience across Desktop, Tablet, and Mobile.
 
-## Tech Stack
-### Frontend
-- Next.js 15 (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- shadcn/ui & Radix UI
-- Framer Motion
-- Recharts
-- React Query & Axios
-- Lucide Icons
-- Sonner Toasts
+---
 
-### Backend
-- Node.js & Express
-- TypeScript
-- MongoDB & Mongoose
-- mongodb-memory-server (Local dev fallback)
-- @faker-js/faker (Data Seeding)
+## 🛠️ Tech Stack
 
-## Installation & Setup
+| Domain | Technologies |
+| :--- | :--- |
+| **Frontend Core** | [Next.js 15](https://nextjs.org/) (App Router), [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/) |
+| **Styling & UI** | [Tailwind CSS v4](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/) |
+| **Animations** | [Framer Motion](https://www.framer.com/motion/) |
+| **Data Fetching** | [React Query](https://tanstack.com/query/latest), [Axios](https://axios-http.com/) |
+| **Backend Core** | [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/) |
+| **Database** | [MongoDB](https://www.mongodb.com/), [Mongoose](https://mongoosejs.com/), [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server) |
 
-### Prerequisites
-- Node.js v18+ 
-- npm
+---
 
-### 1. Clone the repository
+## 📐 Architecture Diagram
+
+```mermaid
+graph TD
+    Client[📱 Next.js Frontend Client]
+    
+    subgraph Frontend [Frontend Architecture]
+        Pages[📄 Next.js App Router]
+        UI[🧩 UI Components - shadcn/ui]
+        State[🔄 State Management - React Query]
+        
+        Client --> Pages
+        Pages --> UI
+        Pages --> State
+    end
+    
+    API[🔌 Express.js REST API]
+    
+    subgraph Backend [Backend Architecture]
+        Routes[🛤️ API Routes]
+        Controllers[🧠 Controllers]
+        Models[📊 Mongoose Models]
+        DB[(🗄️ MongoDB / In-Memory)]
+        
+        API --> Routes
+        Routes --> Controllers
+        Controllers --> Models
+        Models --> DB
+    end
+    
+    State <==>|HTTP / Axios| API
+```
+
+---
+
+## 🚀 All Processes: Installation & Setup
+
+### 📋 Prerequisites
+- [Node.js v18+](https://nodejs.org/)
+- npm or yarn
+
+### 1️⃣ Clone the Repository
 ```bash
 # Clone your repository
 cd "Community Dashboard"
 ```
 
-### 2. Backend Setup
+### 2️⃣ Backend Setup
 ```bash
 cd backend
 npm install
 # Start the backend server on http://localhost:5000
 npm run dev
 ```
-*Note: The backend will automatically provision an in-memory MongoDB instance and seed 100 realistic members with activities on first startup if no `MONGO_URI` is provided in `.env`.*
+> **Note**: The backend will automatically provision an in-memory MongoDB instance and seed 100 realistic members with activities on first startup if no `MONGO_URI` is provided in `.env`.
 
-### 3. Frontend Setup
+### 3️⃣ Frontend Setup
 In a new terminal window:
 ```bash
 cd frontend
@@ -61,7 +94,10 @@ npm install
 npm run dev
 ```
 
-## Environment Variables
+---
+
+## ⚙️ Environment Variables
+
 The application runs out of the box without any `.env` files thanks to the in-memory fallback. For production or persistent data, you can create these files:
 
 **`backend/.env`**
@@ -75,14 +111,20 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/community
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
-## API Endpoints
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/dashboard` | Get aggregate community stats and charts data. |
-| GET | `/api/members` | Get paginated members list. Supports `page`, `limit`, `search`, `status`, `sortBy`, `sortOrder`. |
-| GET | `/api/members/:id` | Get details for a specific member, including recent activities. |
+---
 
-## Project Structure
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+| :---: | :--- | :--- |
+| `GET` | `/api/dashboard` | Get aggregate community stats and charts data. |
+| `GET` | `/api/members` | Get paginated members list. Supports `page`, `limit`, `search`, `status`, `sortBy`, `sortOrder`. |
+| `GET` | `/api/members/:id` | Get details for a specific member, including recent activities. |
+
+---
+
+## 📁 Project Structure
+
 ```text
 Community Dashboard/
 ├── backend/                  # Express REST API
@@ -104,8 +146,10 @@ Community Dashboard/
 └── README.md
 ```
 
-## Future Improvements
-- Implement JWT Authentication and user roles.
-- Add WebSocket support for real-time activity feeds.
-- Create automated End-to-End tests using Playwright.
-- Connect to MongoDB Atlas for persistent cloud data storage.
+---
+
+## 🔮 Future Improvements
+- [ ] Implement JWT Authentication and user roles.
+- [ ] Add WebSocket support for real-time activity feeds.
+- [ ] Create automated End-to-End tests using Playwright.
+- [ ] Connect to MongoDB Atlas for persistent cloud data storage.
