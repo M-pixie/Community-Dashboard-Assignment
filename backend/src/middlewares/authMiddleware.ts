@@ -6,33 +6,46 @@ export interface AuthRequest extends Request {
   user?: any;
 }
 
-export const protect = async (req: AuthRequest, res: Response, next: NextFunction) => {
+export const protect = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-    let token;
-
-    if (req.cookies.jwt) {
-      token = req.cookies.jwt;
-    }
+    const token = req.cookies?.jwt;
 
     if (!token) {
       return res.status(401).json({ message: 'Not authorized, no token' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret') as any;
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_SECRET!
+    ) as { id: string };
 
-    const user = await User.findById(decoded.id).select('-password');
+    const user = await User.findById(decoded.id);
+
     if (!user) {
       res.clearCookie('jwt', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite:
+          process.env.NODE_ENV === 'production'
+            ? 'none'
+            : 'lax',
       });
-      return res.status(401).json({ message: 'Not authorized, user not found' });
+
+      return res.status(401).json({
+        message: 'User not found',
+      });
     }
 
     req.user = user;
+
     next();
-  } catch (error) {
-    res.status(401).json({ message: 'Not authorized, token failed' });
+  } catch {
+    return res.status(401).json({
+      message: 'Token invalid',
+    });
   }
 };
