@@ -141,7 +141,7 @@ export default function EventsPage() {
           </div>
           <Select
             value={statusFilter}
-            onValueChange={(value) => setStatusFilter(value as string)}
+            onValueChange={setStatusFilter}
           >
             <SelectTrigger className="w-[130px] bg-muted/30 border-none shadow-none">
               <div className="flex items-center gap-2"><Filter className="h-3 w-3"/> <SelectValue placeholder="Status" /></div>
